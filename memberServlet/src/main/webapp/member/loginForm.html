@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js"></script>
+<style type="text/css">
+div {
+	display: inline-block;
+	font-size: 8pt;
+	color: red;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h2>로그인</h2>
+<form name="loginForm" method="post" action="http://localhost:8080/memberServlet/LoginServlet">
+	<table cellpadding="5">
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id" id="id">
+				<div name="idDiv" id="idDiv"></div></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="password" name="pwd" id="pwd">
+				<div name="pwdDiv" id="pwdDiv"></div></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input type="button" id="loginBtn" value="로그인">
+				<input type="button" id="writeBtn" value="회원가입" onclick="location='writeForm.html'">
+				<!-- onclick="window.open('writeForm.html')" -->
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

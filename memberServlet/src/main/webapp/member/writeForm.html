@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<!-- <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js">
+// 인터넷사이트로 직접 연결하면 jquery-3.6.0.min.js파일 안들고 다니고 사이트에서 바로 사용하면 됨!
+</script>
+
+<!-- daum 우편번호 api -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script type="text/javascript" src="http://localhost:8080/memberServlet/js/member.js">
+// 상대주소 : src="../js/member.js"
+</script>
+<style type="text/css">
+div {
+	display: inline-block;
+	font-size: 8pt;
+	color: red;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h2>회원가입</h2>
+<form name="form" method="post" action="http://localhost:8080/memberServlet/WriteServlet">
+	<table border="1" cellspacing="0" cellpadding="5">
+		<tr>
+			<td align="center">이름</td>
+			<td><input type="text" name="name" id="name" placeholder="이름 입력">
+				<div id="nameDiv"></div></td>
+		</tr>
+		<tr>
+			<td align="center">아이디</td>
+			<td><input type="text" name="id" id="id" placeholder="아이디 입력">
+				<input type="button" value="중복체크" onclick="checkId()">
+				<div id="idDiv"></div></td>
+		</tr>
+		<tr>
+			<td align="center">비밀번호</td>
+			<td><input type="password" name="pwd" id="pwd">
+				<div id="pwdDiv"></div></td>
+		</tr>
+		<tr>
+			<td align="center">재확인</td>
+			<td><input type="password" name="repwd" id="repwd">
+				<div id="repwdDiv"></div></td>
+		</tr>
+		<tr>
+			<td align="center">성별</td>
+			<td><label><input type="radio" name="gender" value="0" checked>남</label>
+				<label><input type="radio" name="gender" value="1"> 여</label></td>
+		</tr>
+		<tr>
+			<td align="center">이메일</td>
+			<td><input type="text" name="email1" size="13">
+				@ <input type="text" name="email2" placeholder="직접입력" size="13" value="">
+				<input type="email" name="email3" list="email3" placeholder="직접입력">
+				<datalist id="email3" onchange="emailIn()">
+					<option value="naver.com">naver.com</option>
+					<option value="daum.net">daum.net</option>
+					<option value="gmail.com">gmail.com</option>
+				</datalist>
+
+				<!--
+ 				<select name="email3" onchange="emailIn()">
+					<option value="self">직접입력</option>
+					<option value="gmail">gmail.com</option>
+					<option value="hanmail">hanmail.net</option>
+					<option value="naver">naver.com</option>
+				</select> 
+				-->
+				</td>
+		</tr>
+		<tr>
+			<td align="center">핸드폰</td>
+			<td>
+				<select name="tel1">
+					<option value="010" selected>010 </option>
+					<option value="011">011 </option>
+					<option value="019">019 </option>
+				</select>
+			-<input type="text" name="tel2" size="5">
+			-<input type="text" name="tel3" size="5"></td>
+		</tr>
+		<tr>
+			<td align="center">주소</td>
+			<td><input type="text" name="zipcode" id="zipcode" readonly>
+				<input type="button" value="우편번호검색" onclick="execDaumPostcode()"><br>
+				<input type="text" name="addr1" id="addr1" placeholder="주소" size="50" readonly><br>
+				<input type="text" name="addr2" id="addr2" placeholder="상세주소" size="50">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="button" id="writeBtn" value="회원가입" onclick="check()">
+				<input type="reset" value="다시작성"></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
